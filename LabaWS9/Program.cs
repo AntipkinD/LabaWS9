@@ -9,6 +9,7 @@ internal class Program
         Car audi = new Car("AUDI TT", "КП345Т");
         Washer CleanWheel = new();
         Garage myGarage = new();
+        myGarage.setCars(audi);
         for (int i = 5; i >= 1; i--)
         {
             myGarage.setCars(new Car());
