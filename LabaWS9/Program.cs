@@ -9,19 +9,17 @@ internal class Program
         Car audi = new Car("AUDI TT", "КП345Т");
         Washer CleanWheel = new();
         Garage myGarage = new();
-        audi.getInfo();
-        myGarage.Stay(audi);
-        Car[] cars = new Car[5];
-        cars[0] = audi;
-        for (int i = cars.Length-1; i >= 1; i--)
+        for (int i = 5; i >= 1; i--)
         {
-            cars[i] = new Car();
+            myGarage.setCars(new Car());
         }
+        myGarage.getMyCars();
         //CleanWheel.Wash(audi);
         CWCleaner cleaner = CleanWheel.Wash;
-        for (int i = cars.Length-1; i >= 0; i--)
+        foreach (Car i in myGarage.garageCollection)
         {
-            cleaner(cars[i]);
+            cleaner(i);
         }
+        myGarage.getMyCars();
     }
 }

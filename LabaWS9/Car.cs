@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,17 +24,28 @@ namespace LabaWS9
             Number = number;
             Pollution = new Random().Next(0, 101);
         }
-        public void getInfo()
-        {
-            Console.WriteLine($"Машина {Mark}, с номером {Number}, она загрязнена на {Pollution} %");
-        }
+        
     }
     internal class Garage
     {
-        public void Stay(Car car)
+        internal protected List<Car> garageCollection = new List<Car>();
+        public void getInfo(Car car)
         {
-            car.Pollution += new Random().Next(0, 2);
-            Console.WriteLine($"Машина {car.Mark} стоит в гараже, она загрязнена на {car.Pollution} %");
+            Console.WriteLine($"Машина {car.Mark}, с номером {car.Number}, она загрязнена на {car.Pollution} %");
+        }
+        public void getMyCars()
+        {
+            foreach (Car i in this.garageCollection)
+                getInfo(i);
+        }
+        public int getQuantity()
+        {
+            return this.garageCollection.Count;
+        }
+        public void setCars(params Car[] cars)
+        {
+            foreach(Car i in cars)
+            this.garageCollection.Add(i);
         }
     }
     internal class Washer
